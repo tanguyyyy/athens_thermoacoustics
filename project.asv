@@ -1,0 +1,33 @@
+% Initialize tax
+taXinit;
+
+% Simple open end tube
+sys = tax('./athens_thermoacoustics/qwResonator.slx', 1200);
+
+AcVec = getAcVec(sys);
+close all;
+
+X = sys.state.f.x;
+
+% Plot
+u = AcVec{2};
+figure;
+plot(X, abs(u));
+ylabel('u (m/s)');
+xlabel('x (m)');
+
+numberOfModes = size(u,2);
+for i=1:numberOfModes
+    for j=1:numberOfModes
+        u
+
+    end
+end
+
+u1 = u(:,1);
+u2 = u(:,2);
+
+inner_product = innerProduct(X, u1, u2);
+
+% Display the result
+disp(['The inner product <u1|u2> is: ', num2str(inner_product)]);
